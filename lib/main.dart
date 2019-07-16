@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(MyApp());
-}
+void main() => runApp(MyApp());
+
 
 class MyApp extends StatefulWidget {
   @override
@@ -13,6 +12,8 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  List<String> _drinks = ['Booze Tester'];
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -22,24 +23,30 @@ class _MyAppState extends State<MyApp> {
         ),
         body: Column(
           children: [
-
             Container(
               margin: EdgeInsets.all(10.0),
               child: RaisedButton(
-              onPressed: (){
-
-              },
-              child: Text('Add Card'),
+                onPressed: () {
+                  setState(() {
+                    _drinks.add('Advanced Booze Tester');
+                  });
+                },
+                child: Text('Add Card'),
               ),
             ),
-
-            Card(
-              child: Column(
-                children: <Widget>[
-                  Image.asset('assets/images/booze.jpeg'),
-                  Text('Image boi')
-                ],
-              ),
+            Column(
+              children: _drinks
+                  .map(
+                    (element) => Card(
+                      child: Column(
+                        children: <Widget>[
+                          Image.asset('assets/images/booze.jpeg'),
+                          Text(element)
+                        ],
+                      ),
+                    ),
+                  )
+                  .toList(),
             ),
           ],
         ),
