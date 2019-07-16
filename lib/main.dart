@@ -1,21 +1,47 @@
 import 'package:flutter/material.dart';
 
-void main(){
+void main() {
   runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   @override
-  Widget build(BuildContext context){
+  State<StatefulWidget> createState() {
+    // TODO: implement createState
+    return _MyAppState();
+  }
+}
+
+class _MyAppState extends State<MyApp> {
+  @override
+  Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
           title: Text("Test Flight"),
         ),
-        body: Card(child: Column(children: <Widget>[
-          Image.asset('assets/images/booze.jpeg'),
-          Text('Image boi')       
-        ],),
+        body: Column(
+          children: [
+
+            Container(
+              margin: EdgeInsets.all(10.0),
+              child: RaisedButton(
+              onPressed: (){
+
+              },
+              child: Text('Add Card'),
+              ),
+            ),
+
+            Card(
+              child: Column(
+                children: <Widget>[
+                  Image.asset('assets/images/booze.jpeg'),
+                  Text('Image boi')
+                ],
+              ),
+            ),
+          ],
         ),
       ),
     );
